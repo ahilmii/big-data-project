@@ -1,0 +1,54 @@
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.16'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'org.ahilmi'
+version = '0.0.1-SNAPSHOT'
+description = 'school-management'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // REST API
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // MySQL ve JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // Redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // Validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // Hadoop HDFS Java Client
+    implementation 'org.apache.hadoop:hadoop-client:3.3.6'
+
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
